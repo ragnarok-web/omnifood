@@ -1,0 +1,260 @@
+/*spacing system (px) :
+2/4/8/12/16/24/32/48/64/80/96/128
+
+-line heights
+default: 1
+small:1.05
+paragraph default:1.6
+large: 1.8
+
+-font weights
+default: 400
+Meduim:500h
+semi-bold:600
+Bold:700
+
+-border raduis
+
+default: 9px
+meduim: 11px
+
+--shadows
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+-letter spacing
+0.5px
+0.75px
+--- 0.2 colors:
+
+-primary: #e67e22
+-tints: #fdf2e9
+#fae5d3
+#eb984eh
+-shades: #cf711f
+#45260a
+-accents:
+greys:
+#767676 (lightest grey allowed on white)
+#888
+#555
+#333
+#6f6f6f (lightest grey allowed on #fae5d3)
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font size: 10px;
+  10px / 16px = 0.625 = 62.5%
+  percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  /* only works i fthe is nothing absolutely positioneded in relation to the body */
+  overflow-x: hidden; /* all the element that overflow the view port in the x axes will be hidden (for the mobile nav)*/
+}
+
+/***********************/
+/*GENERAL REUSABLE COMPONENTS*/
+/***********************/
+.container {
+  /*1140 px also*/
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+
+  /* margin-bottom: 9.6rem; */
+}
+
+/* .grid:last-child {
+  margin-bottom: 0;
+} */
+
+.grid:not(:last-child) {
+  /*  building the pricing section: 24:00 */
+  margin-bottom: 9.6rem;
+}
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--center-v {
+  align-items: center;
+}
+
+.heading-primary,
+.heading-secondary {
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subheading {
+  display: block; /* the span is an inline element so you need to make it a block*/
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+.btn,
+.btn:link,
+.btn:visited {
+  /*inline element so you hav to turn it to inline block for the padding to work*/
+  display: inline-block;
+  text-decoration: none; /* to remove the line under the text*/
+  font-size: 2rem;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+
+  font-weight: 600;
+  transition: all 0.3s; /* animationt: make the button have the effect of slow when hovered, all is for background colour and color*/
+  /*only necassery for .btn*/
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:visited,
+.btn--outline:link {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+  /* trick to add border inside, otherwise the whole content will rise up if you use border simply*/
+  box-shadow: inset 0 0 0 3px #fff; /* inset : on the inside */
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: white;
+  color: #555;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+
+*:focus {
+  /* for the blue border outline of the buttons and inputs*/
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.514);
+}
+
+/* helper/settings classes */
+
+.margin-right-sm {
+  margin-right: 1.6rem !important; /*to make sure this style always happen no matter what for the margin right of the button*/
+}
+
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
+strong {
+  font-weight: 500;
+}
